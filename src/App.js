@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Router from './Router';
+//import HeroDetailsPage from '../pages/HeroDetailsPage';
 import logo from './logo.svg';
 import './App.css';
 
@@ -13,9 +15,11 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Router />
       </div>
     );
   }
 }
 
 export default App;
+
