@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { Container } from 'semantic-ui-react';
@@ -15,7 +15,15 @@ const Router = () => {
             render={props => <Home {...props} apiURL={API_URL} />}
           />
         <Route path="/details/:id" component={HeroDetailsPage} /> */}
-          <Route component={CatListScreen} />
+          <Route 
+            exact
+            path="/"
+            component={ (props) => (<CatListScreen {...props}/>)}          
+          />
+          <Route 
+            path="/results"          
+            component={ (props) => (<CatListScreen isResultList {...props}/>)}          
+          />
         </Switch>
         </Container>
       </BrowserRouter>

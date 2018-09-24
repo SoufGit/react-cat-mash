@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import CatListContainer from '../containers/CatListContainer';
+import CatResultContainer from '../containers/CatResultContainer';
 import { fetchCatList } from '../reducers/catReducer';
-
 
 class CatListScreen extends Component {
   componentDidMount() {
       //fetch api
-    this.props.fetchListAction();
-  }
+      //if(!this.props.isResultList){
+        this.props.fetchListAction();
+      //}    
+  }   
 
   render() {
-    return (
-          <CatListContainer />
+    return (this.props.isResultList ? <CatResultContainer isResultList={this.props.isResultList}/> : <CatListContainer />
     );
   }
 }

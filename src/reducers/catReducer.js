@@ -5,7 +5,7 @@ const BASE_URL = 'https://latelier.co/data/cats.json';
 const catReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_CAT_LIST:
-      return action.data;
+      return state.length > 0  ? state : action.data;
     case FETCH_CAT_LIST_ERROR:
       return action.error;
     case INCREMENT_VOTE:
@@ -25,7 +25,7 @@ const catReducer = (state = [], action) => {
 
 export default catReducer;
 
-export const fetchCatList = () => dispatch =>
+export const  fetchCatList = () => dispatch =>
   // TODO: use react-promise middleware to auto dispatch laoding, success and fail actions
   axios
     .get(BASE_URL)
