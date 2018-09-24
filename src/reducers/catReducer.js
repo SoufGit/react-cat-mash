@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { FETCH_CAT_LIST, FETCH_CAT_LIST_ERROR, INCREMENT_VOTE } from '../constants/actionTypes';
+import _ from 'lodash';
+import { FETCH_CAT_LIST, FETCH_CAT_LIST_ERROR, INCREMENT_VOTE, FETCH_TWO_CAT_LIST } from '../constants/actionTypes';
 const BASE_URL = 'https://latelier.co/data/cats.json';
 
 const catReducer = (state = [], action) => {
@@ -29,12 +30,19 @@ export const  fetchCatList = () => dispatch =>
   // TODO: use react-promise middleware to auto dispatch laoding, success and fail actions
   axios
     .get(BASE_URL)
-    .then(response =>
-        //console.log('response', response)
-      dispatch({
+    .then(response => //{
+        //console.log('response', response);
+        
+     //return( 
+         dispatch({
         type: FETCH_CAT_LIST,
         data: response.data.images,
-      })
+      }),
+    //   dispatch({
+    //     type: FETCH_TWO_CAT_LIST,
+    //     data: response.data.images,
+    //   })
+     //)}
     )
     // TODO: dispatch error action
     // eslint-disable-next-line no-console

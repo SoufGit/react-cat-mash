@@ -3,7 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { Container } from 'semantic-ui-react';
 import CatListScreen from './screen/CatListScreen';
-//import HeroDetailsPage from '../pages/HeroDetailsPage';
 
 const Router = () => {
     return (

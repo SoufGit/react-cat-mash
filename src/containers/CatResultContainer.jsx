@@ -7,20 +7,26 @@ import ErrorMsg from '../common/ErrorMsg';
 import Header from '../components/HeaderComponent';
 import CatListComponent from '../components/CatListComponent';
 
-const CatResultContainer = ({response, isResultList}) => {
+const CatResultContainer = ({response}) => {
     const onError = isBoolean(response); // display the error block
     
-    const toto = sortBy(response, c => { return -c.nbVote; });
+    const sortedList = sortBy(response, c => { return -c.nbVote; });
+    const msg = 'List of votes';
     console.log('responseresponseresponse', response); 
-    console.log('totototototo', toto); 
+    console.log('sortedListsortedList', sortedList); 
   return (
     <div className="mb-5">
       <Header />
 {!onError ? (
+    <React.Fragment>
+        <p className="App-intro">
+    {msg}
+        </p>
     <CatListComponent
-    catList={toto}
+    catList={sortedList}
     isResultList
     />
+    </React.Fragment>
   ) : (
     <ErrorMsg />
   )}
