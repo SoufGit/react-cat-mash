@@ -10,7 +10,7 @@ const CatListComponent = ({
     
   return (   
     
-    <Card.Group doublincatListg centered itemsPerRow={2} className="radius arena">
+    <Card.Group doubling centered itemsPerRow={2} className="radius arena">
        {catList.map((cat, index) => (
         <CatItemComponent
           key={cat.id}

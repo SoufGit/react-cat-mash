@@ -1,16 +1,14 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import CatContentResult from './results/CatContentResultComponent';
-import CatContent from './duel/CatContentComponent';
+//import CatContent from './duel/CatContentComponent';
 
 const CatItemComponent = ({
     cat,
     index,
     onClickItem,
     isResultList,
-}) => {
-    console.log('catin' , cat);
-    return(
+}) => (
     <Card
       link
       raised
@@ -32,19 +30,20 @@ const CatItemComponent = ({
         onClick={e =>  !isResultList ? onClickItem(cat) : null} // add vote for a cat
       />
     <Card.Content>
-        { isResultList ? 
+        { isResultList && 
             <CatContentResult
             index={index}
             nbVote={cat.nbVote}
           />
-          :
+          /*:
+          cat.isWinner &&
           <CatContent
           cat={cat}
           isWinner= {cat.isWinner}
-        />
+        />*/
         }
       </Card.Content>      
     </Card>
-  )};
+  );
       
       export default CatItemComponent;

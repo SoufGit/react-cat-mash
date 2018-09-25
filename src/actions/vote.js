@@ -8,16 +8,6 @@ export const increment = data => ({
     payload: data,
 });
 
-export const twoCatList = data => ({
-    type: types.FETCH_TWO_CAT_LIST,
-    payload: data,
-});
-
-export const otherCatList = data => ({
-    type: types.FETCH_OTHER_CAT_LIST,
-    payload: data,
-});
-
 export const decrement = () => ({
     type: types.DECREMENT_VOTE
 })

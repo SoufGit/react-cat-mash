@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import CatListContainer from '../containers/CatListContainer';
 import CatResultContainer from '../containers/CatResultContainer';
 import { fetchCatList } from '../reducers/catReducer';
+import Header from '../components/HeaderComponent';
 
 class CatListScreen extends Component {
   componentDidMount() {
@@ -15,7 +16,15 @@ class CatListScreen extends Component {
   }   
 
   render() {
-    return (this.props.isResultList ? <CatResultContainer isResultList={this.props.isResultList}/> : <CatListContainer />
+    const msg = this.props.isResultList ? 'List of votes' : 'Make your choice';
+    return (
+        <div className="mb-5">
+        <Header />
+        <p className="App-intro">
+            {msg}
+        </p>
+        {this.props.isResultList ? <CatResultContainer isResultList={this.props.isResultList}/> : <CatListContainer />}
+        </div>
     );
   }
 }
