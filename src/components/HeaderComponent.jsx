@@ -9,7 +9,7 @@ const HeaderComponent = () => (
       <Responsive as={Icon} minWidth={768} name="paw" /> CAT MASH
     </Menu.Item>
   </Menu>
-  <Menu attached inverted className="bg-red-gradient" widths={2}>
+  <Menu attached inverted className="bg-blue-gradient" widths={2}>
     <Menu.Item
       as={NavLink}
       exact

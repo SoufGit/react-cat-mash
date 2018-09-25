@@ -24,19 +24,19 @@
   color: white !important;
 }
 
-/*.bg-red-gradient {
-  background: #a73737 !important; /* fallback for old browsers */
-  /*background: -webkit-linear-gradient(
+.bg-blue-gradient {
+  background: #108dc7 !important; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
     to right,
-    #7a2828,
-    #a73737
+    #108dc7,
+    #108dc7
   ) !important; /* Chrome 10-25, Safari 5.1-6 */
-  /*background: linear-gradient(
+  background: linear-gradient(
     to right,
-    #7a2828,
-    #a73737
+    #108dc7,
+    #108dc7
   ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-/*}*/
+}
 .thumbnail {
   height: 300px !important;
   object-fit: cover;
