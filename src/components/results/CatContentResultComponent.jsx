@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 const CatContentResultComponent = ({index, nbVote}) => {
     let position;

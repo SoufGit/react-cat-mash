@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Router from './Router';
 import logo from './tom1.jpg';
 import './App.css';
+import './main.css';
 
 class App extends Component {
   render() {

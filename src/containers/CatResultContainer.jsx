@@ -12,8 +12,6 @@ const CatResultContainer = ({response}) => {
     
     const sortedList = sortBy(response, c => { return -c.nbVote; });
     const msg = 'List of votes';
-    console.log('responseresponseresponse', response); 
-    console.log('sortedListsortedList', sortedList); 
   return (
     <div className="mb-5">
       <Header />

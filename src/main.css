@@ -1,0 +1,136 @@
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+
+.righteous {
+  font-family: 'Righteous', cursive;
+}
+
+.font-4rem {
+  font-size: 4rem;
+}
+
+.font-25rem {
+  font-size: 2.5rem;
+}
+
+.font-185rem {
+  font-size: 1.85rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: white !important;
+}
+
+/*.bg-red-gradient {
+  background: #a73737 !important; /* fallback for old browsers */
+  /*background: -webkit-linear-gradient(
+    to right,
+    #7a2828,
+    #a73737
+  ) !important; /* Chrome 10-25, Safari 5.1-6 */
+  /*background: linear-gradient(
+    to right,
+    #7a2828,
+    #a73737
+  ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/*}*/
+.thumbnail {
+  height: 300px !important;
+  object-fit: cover;
+}
+.thumbnail.arena {
+  width: 300px !important;
+}
+
+.ui.card > :first-child,
+.ui.cards > .card > :first-child {
+  /* CSS Fix for Semantic UI */
+  border-top-color: rgba(0, 0, 0, 0) !important;
+  border-top-style: solid !important;
+  border-top-width: 7px !important;
+}
+
+.ui.card > .image,
+.ui.cards > .card > .image {
+  /* CSS Fix for Semantic UI */
+  background: rgba(0, 0, 0, 0);
+}
+
+.ui.card.arena > :first-child,
+.ui.cards.arena > .card > :first-child {
+  border-radius: 50rem !important;
+}
+
+.ui.bordered.image img,
+.ui.bordered.image svg,
+.ui.bordered.images .image,
+.ui.bordered.images img,
+.ui.bordered.images svg,
+img.ui.bordered.image {
+  /* CSS Fix for Semantic UI */
+  border: 7px solid rgba(0, 0, 0, 0);
+}
+
+.radius {
+  border-radius: 50rem !important;
+}
+
+.ui.card > .content,
+.ui.cards > .card > .content {
+  /* CSS Fix for Semantic UI */
+  border-top: unset !important;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 1.5rem !important;
+}
+
+.swipe-left {
+  animation: fadein 1s;
+}
+
+.swipe-right {
+  animation: fadein 1s;
+}
+
+.swipe-left.animit {
+  animation: swipe-left 1s forwards;
+}
+
+.swipe-right.animit {
+  animation: swipe-right 1s forwards;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes swipe-left {
+  to {
+    transform: rotate(-13deg) translate3d(-100%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes swipe-right {
+  to {
+    transform: rotate(13deg) translate3d(100%, 0, 0);
+    opacity: 0;
+  }
+}

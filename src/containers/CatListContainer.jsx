@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { compose, withState, withHandlers, lifecycle, withProps } from 'recompose';
+import { compose, withState, withHandlers, withProps } from 'recompose';
 import isBoolean from 'lodash/isBoolean';
+import merge from 'lodash/merge';
 
 import ErrorMsg from '../common/ErrorMsg';
 import Header from '../components/HeaderComponent';
@@ -13,12 +14,11 @@ const CatListContainer = ({
     response, 
     onClickItem, 
     retDataFilter, 
-    newCatList
+    isWinner,
 }) => {
-    console.log('CatListContainerCatListContainerCatListContainerCatListContainer'); 
     const onError = isBoolean(response); // display the error block
     const msg = 'Make your choice';
-    console.log('retDataFilterretDataFilter', retDataFilter);
+    console.log('isWinnerisWinnerisWinner', isWinner);
   return (
     <div className="mb-5">
       <Header />
@@ -42,13 +42,6 @@ const CatListContainer = ({
 CatListContainer.propTypes = {
     response: PropTypes.array || PropTypes.bool,
   };
-  
-//   const mapStateToProps = state => ({
-//     // OK state.fetchCatList should be a selector
-//     response: state.fetchCatList,
-//   });
-  
-  //export default connect(mapStateToProps)(CatListContainer);
 
   export default(compose(
     withState('isWinner', 'setIswinner', false), 
@@ -62,56 +55,31 @@ CatListContainer.propTypes = {
           }),
         dispatch => ({
             incrementAction: data => dispatch(increment(data)),
-            twoCatListAction : data => dispatch(twoCatList(data)),
-            otherCatListAction : data => dispatch(otherCatList(data)),
           })
     ),
     
-      withProps(({ response, dataFilter, data }) => {
-        
+      withProps(({ response }) => {        
         const newCatList = response.slice();
-    let retDataFilter = newCatList.splice(0,2);
-    
-    if(dataFilter.length > 0){
-        retDataFilter = newCatList.filter(cat => dataFilter.map((item) => {
-            if (item.id !== cat.id) {
-              return cat;
-            }
-          }));
-          console.log('dataFilter.length', retDataFilter);
-    }
-
-    let retDataFilter123 = newCatList.splice(0,2);
-    response = retDataFilter;
-    //setData(retDataFilter);
-     
-    // console.log('newCatListnewCatList', newCatList);
+        const dataFiltered = newCatList.filter(item => !item.hasVote);
+        const retDataFilter = dataFiltered.splice(0,2);
         return {
             newCatList,
             retDataFilter,
-            response
+            dataFiltered
         };
       }),
       withHandlers({
-        onClickItem: ({ setIswinner, incrementAction, twoCatListAction, retDataFilter, setData }) => (cat) => {
-            const promise1 = Promise.resolve(incrementAction(cat));
-
-             promise1.then((value) => {
-                console.log('valuevaluevalue',value);
-                console.log('retDataFilterretDataFilter', retDataFilter);
-                // expected output: Array [1, 2, 3]
-                twoCatListAction(retDataFilter);
-              });
-              setData(retDataFilter);
-            setIswinner(cat.isWinner); // render the card
+        onClickItem: ({ setIswinner, incrementAction, retDataFilter, setData }) => (cat) => {
+            const newData = retDataFilter.map(item => {
+                if(item.id === cat.id){item.hasClicked = true};
+                return item;
+            })
+            console.log('newData', newData);
+            const promise1 = setTimeout(() => {incrementAction(newData)}, 1000);
+            //clearTimeout(promise1);
+            //setIswinner(cat.isWinner);
         },
       }),
-      lifecycle({
-        componentDidMount() {
-            //this.props.twoCatListAction(this.props.response);
-            //console.log('this.props', this.props);
-        },
-      })
   )(CatListContainer));
 
 

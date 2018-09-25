@@ -1,6 +1,5 @@
 import axios from 'axios';
-import _ from 'lodash';
-import { FETCH_CAT_LIST, FETCH_CAT_LIST_ERROR, INCREMENT_VOTE, FETCH_TWO_CAT_LIST } from '../constants/actionTypes';
+import { FETCH_CAT_LIST, FETCH_CAT_LIST_ERROR, INCREMENT_VOTE } from '../constants/actionTypes';
 const BASE_URL = 'https://latelier.co/data/cats.json';
 
 const catReducer = (state = [], action) => {
@@ -10,15 +9,19 @@ const catReducer = (state = [], action) => {
     case FETCH_CAT_LIST_ERROR:
       return action.error;
     case INCREMENT_VOTE:
-          return state.map(cat => {
-              let isWinner = false;
-            if (cat.id === action.payload.id) {
-              cat.nbVote = action.payload.nbVote ? action.payload.nbVote + 1 : 1;
-              isWinner = true;
+          return state.map(item => { action.payload.map(cat => {
+              //cat.isWinner = false;
+            if (cat.id === item.id && item.hasClicked) {
+              cat.nbVote = item.nbVote ? item.nbVote + 1 : 1;
+              cat.isWinner = true;
+              //cat.hasVote= true;
             }
-            cat.isWinner = isWinner;
+            cat.hasVote= true;
+            //cat.isWinner = isWinner;
             return cat;
           });
+          return item;
+        });
     default:
       return state;
   }
@@ -38,11 +41,6 @@ export const  fetchCatList = () => dispatch =>
         type: FETCH_CAT_LIST,
         data: response.data.images,
       }),
-    //   dispatch({
-    //     type: FETCH_TWO_CAT_LIST,
-    //     data: response.data.images,
-    //   })
-     //)}
     )
     // TODO: dispatch error action
     // eslint-disable-next-line no-console

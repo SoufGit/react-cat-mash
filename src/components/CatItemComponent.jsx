@@ -8,8 +8,9 @@ const CatItemComponent = ({
     index,
     onClickItem,
     isResultList,
-}) => {  
-  return (
+}) => {
+    console.log('catin' , cat);
+    return(
     <Card
       link
       raised
@@ -38,12 +39,12 @@ const CatItemComponent = ({
           />
           :
           <CatContent
+          cat={cat}
           isWinner= {cat.isWinner}
         />
         }
       </Card.Content>      
     </Card>
-  );
-};
+  )};
       
       export default CatItemComponent;
